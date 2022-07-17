@@ -1,6 +1,12 @@
 # clang-diagnostic-flags-matrix
-a simple script to generate a matrix of clang diagnostic flags
-# Clang command line flags
+
+A simple script to generate a matrix of clang diagnostic flags
+
+I created this script to support a _today I learned_ (TIL) note.
+
+It does not contain information for all versions of Clang and the matrix may contain errors if the code is not working as expected.
+
+## Clang command line flags
 
 | | [4.0.0](https://releases.llvm.org/4.0.0/tools/clang/docs/DiagnosticsReference.html) | [5.0.0](https://releases.llvm.org/5.0.0/tools/clang/docs/DiagnosticsReference.html) | [6.0.0](https://releases.llvm.org/6.0.0/tools/clang/docs/DiagnosticsReference.html) | [7.0.0](https://releases.llvm.org/7.0.0/tools/clang/docs/DiagnosticsReference.html) | [8.0.0](https://releases.llvm.org/8.0.0/tools/clang/docs/DiagnosticsReference.html) | [9.0.0](https://releases.llvm.org/10.0.0/tools/clang/docs/DiagnosticsReference.html) | [10.0.0](https://releases.llvm.org/10.0.0/tools/clang/docs/DiagnosticsReference.html) | [11.0.0](https://releases.llvm.org/11.0.0/tools/clang/docs/DiagnosticsReference.html) | [12.0.0](https://releases.llvm.org/12.0.0/tools/clang/docs/DiagnosticsReference.html) | [13.0.0](https://releases.llvm.org/13.0.0/tools/clang/docs/DiagnosticsReference.html) | [14.0.0](https://releases.llvm.org/14.0.0/tools/clang/docs/DiagnosticsReference.html) |
 |-|-|-|-|-|-|-|-|-|-|-|-|
