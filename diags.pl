@@ -12,15 +12,15 @@ use feature qw(say);
 
 my %urls = (
     '14.0.0' => 'https://releases.llvm.org/14.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '13.0.0' => 'https://releases.llvm.org/13.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '12.0.0' => 'https://releases.llvm.org/12.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '11.0.0' => 'https://releases.llvm.org/11.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '10.0.0' => 'https://releases.llvm.org/10.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '9.0.0' => 'https://releases.llvm.org/10.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '8.0.0' => 'https://releases.llvm.org/8.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '7.0.0' => 'https://releases.llvm.org/7.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '6.0.0' => 'https://releases.llvm.org/6.0.0/tools/clang/docs/DiagnosticsReference.html',
-    '5.0.0' => 'https://releases.llvm.org/5.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'13.0.0' => 'https://releases.llvm.org/13.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'12.0.0' => 'https://releases.llvm.org/12.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'11.0.0' => 'https://releases.llvm.org/11.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'10.0.0' => 'https://releases.llvm.org/10.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'9.0.0' => 'https://releases.llvm.org/10.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'8.0.0' => 'https://releases.llvm.org/8.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'7.0.0' => 'https://releases.llvm.org/7.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'6.0.0' => 'https://releases.llvm.org/6.0.0/tools/clang/docs/DiagnosticsReference.html',
+    #'5.0.0' => 'https://releases.llvm.org/5.0.0/tools/clang/docs/DiagnosticsReference.html',
     '4.0.0' => 'https://releases.llvm.org/4.0.0/tools/clang/docs/DiagnosticsReference.html',
 );
 
@@ -31,7 +31,6 @@ my $headings = {};
 foreach my $key (keys %urls) {
     
     my $url = $urls{$key};
-    #print STDERR "We are parsing >$url< for key >$key<\n";
     my $res = $ua->get($url)->result;
 
     if    ($res->is_success)  { _parse_result($res, $key, $url, $data, $headings) }
@@ -40,29 +39,35 @@ foreach my $key (keys %urls) {
     else                      { say STDERR 'Unable to handle, stopping - '.$res->message; exit $res->code }  
 }
 
-#print STDERR Dumper $headings;
-#print STDERR Dumper $data;
-
+# We sort the 3-part (semver) version number by the major number
 my @versions = sort { ($a =~ m/^(\d+)\./)[0] <=> ($b =~ m/^(\d+)\./)[0] } (keys %urls);
 my @h = sort (keys %{$headings});
 
 my $titles = '| |';
 my $seperator = '|-|';
 
+# Output Markdown title
 print '# Clang command line flags';
 print "\n\n";
 
+# Generate table headings with versions, linked to the documentation pages
+# See the URL as the beginning of the program
+# In addition we generate the separator, since rows and heading are using same
+# notation in markdown
 foreach my $version (@versions) {
     my $url = $urls{$version};
     $titles .= " [$version]($url) |";
     $seperator .= "-|";
 }
 
+# Output table headings and separator
 print "$titles\n";
 print "$seperator\n";
 
+# Output rows
 foreach my $flag (@h) {
-    if ($flag =~ /^\-/) {
+    # We skip/ignore heading not resembling command line flags
+    if (is_cli_flag($flag)) {
         print "| `$flag` |";
         foreach my $version (@versions) {
             if (exists $data->{$version}->{$flag}) {
@@ -79,9 +84,9 @@ print "\n";
 exit 0;
 
 sub _parse_result {
-    my ($result, $key, $url, $data, $headings) = @_;
+    my ($result, $version, $url, $data, $headings) = @_;
 
-    my ($major_version) = $key =~ m/^(\d+)\./;
+    my ($major_version) = $version =~ m/^(\d+)\./;
 
     my $match = '';
 
@@ -92,10 +97,23 @@ sub _parse_result {
     }
 
     for my $e ($result->dom->find($match)->each) {        
-        $headings->{$e->text}++;
-        #print STDERR "We got: ".$e->text."\n";
-        my ($anchor) = $e->text =~ m/^-(.*)/;
-        my $link = $url .'#'. lc $anchor;
-        $data->{$key}->{$e->text} = $link;
+        # We skip/ignore heading not resembling command line flags
+        if (is_cli_flag($e->text)) {
+            $headings->{$e->text}++;
+            my ($link) = $e->text =~ m/^-(.*)/;
+            # HACK: We generate the URL for the anchor, this might fail if the naming is not consistent
+            my $anchor = $url .'#'. lc $link;
+            $data->{$version}->{$e->text} = $anchor;
+        }
     }
+}
+
+sub is_cli_flag {
+    my $str = shift;
+
+    if ($str =~ m/^\-/) {
+        return 1;
+    }
+
+    return 0;
 }
