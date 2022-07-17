@@ -2,7 +2,7 @@
 
 A simple script to generate a matrix of clang diagnostic flags
 
-I created this script to support a _today I learned_ (TIL) note.
+I created this script to support a _today I learned_ (TIL) [note on the topic](https://github.com/jonasbn/til/blob/master/clang/diagnostic_flags.md).
 
 It does not contain information for all versions of Clang and the matrix may contain errors if the code is not working as expected.
 
