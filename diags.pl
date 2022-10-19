@@ -57,7 +57,7 @@ print "\n\n";
 # notation in markdown
 foreach my $version (@versions) {
     my $url = $urls{$version};
-    $titles .= " [$version]($url) |";
+    $titles .= "[$version]($url)|";
     $seperator .= "-|";
 }
 
@@ -69,12 +69,13 @@ print "$seperator\n";
 foreach my $flag (@h) {
     # We skip/ignore heading not resembling command line flags
     if (is_cli_flag($flag)) {
-        print "| `$flag` |";
+        print "|`$flag`|";
         foreach my $version (@versions) {
             if (exists $data->{$version}->{$flag}) {
-                print ' [✅]('.$data->{$version}->{$flag}.') |';
+                my $short_url = _shorten_url($data->{$version}->{$flag});
+                print '[X]('.$short_url.')|';
             } else {
-                print ' ❌ |';
+                print '-|';
             }
         }
         print "\n";
@@ -83,6 +84,17 @@ foreach my $flag (@h) {
 print "\n";
 
 exit 0;
+
+# https://releases.llvm.org/5.0.0/tools/clang/docs/DiagnosticsReference.html#rsanitize-address
+# https://pxy.fi/5/rsanitize-address
+
+sub _shorten_url {
+    my ($url) = shift;
+
+    my $short_url = $url =~ s/https:\/\/releases.llvm.org\/(\d+)\.\d+\.\d+\/tools\/clang\/docs\/DiagnosticsReference.html#(.*)/https:\/\/pxy.fi\/$1\/$2/r;
+
+    return $short_url;
+}
 
 sub _parse_result {
     my ($result, $version, $url, $data, $headings) = @_;
