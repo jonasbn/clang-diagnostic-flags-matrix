@@ -1,4 +1,4 @@
-# clang-diagnostic-flags-matrix
+# clang diagnostic flags matrix generator
 
 A simple script to generate a matrix of clang diagnostic flags
 
@@ -6,7 +6,15 @@ I created this script to support a _today I learned_ (TIL) [note on the topic](h
 
 It does not contain information for all versions of Clang and the matrix may contain errors if the code is not working as expected.
 
-## Clang command line flags
+## Resources and References
+
+- [My TIL collection: clang diagnostic flags](https://github.com/jonasbn/til/blob/master/clang/diagnostic_flags.md) (GitHub)
+- [My TIL collection: clang diagnostic flags](http://jonasbn.github.io/til/clang/diagnostic_flags.html) (website)
+- [pxy-redirect][pxy-redirect]
+- [llvm releases documentation site][LLVM]
+- [pxy.fi]
+
+## clang command line flags
 
 | | [4.0.0](https://pxy.fi/4.0.0/tools/clang/docs/DiagnosticsReference.html)| [5.0.0](https://pxy.fi/5.0.0/tools/clang/docs/DiagnosticsReference.html)| [6.0.0](https://pxy.fi/6.0.0/tools/clang/docs/DiagnosticsReference.html)| [7.0.0](https://pxy.fi/7.0.0/tools/clang/docs/DiagnosticsReference.html)| [8.0.0](https://pxy.fi/8.0.0/tools/clang/docs/DiagnosticsReference.html)| [9.0.0](https://pxy.fi/10.0.0/tools/clang/docs/DiagnosticsReference.html)| [10.0.0](https://pxy.fi/10.0.0/tools/clang/docs/DiagnosticsReference.html)| [11.0.0](https://pxy.fi/11.0.0/tools/clang/docs/DiagnosticsReference.html)| [12.0.0](https://pxy.fi/12.0.0/tools/clang/docs/DiagnosticsReference.html)| [13.0.0](https://pxy.fi/13.0.0/tools/clang/docs/DiagnosticsReference.html)| [14.0.0](https://pxy.fi/14.0.0/tools/clang/docs/DiagnosticsReference.html)| [15.0.0](https://pxy.fi/15.0.0/tools/clang/docs/DiagnosticsReference.html)|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|
@@ -970,3 +978,7 @@ It does not contain information for all versions of Clang and the matrix may con
 |`-Wxor-used-as-pow`|-|-|-|-|-|[X](https://pxy.fi/10/wxor-used-as-pow)|[X](https://pxy.fi/10/wxor-used-as-pow)|[X](https://pxy.fi/11/wxor-used-as-pow)|[X](https://pxy.fi/12/wxor-used-as-pow)|[X](https://pxy.fi/13/wxor-used-as-pow)|[X](https://pxy.fi/14/wxor-used-as-pow)|[X](https://pxy.fi/15/wxor-used-as-pow)|
 |`-Wzero-as-null-pointer-constant`|-|-|[X](https://pxy.fi/6/wzero-as-null-pointer-constant)|[X](https://pxy.fi/7/wzero-as-null-pointer-constant)|[X](https://pxy.fi/8/wzero-as-null-pointer-constant)|[X](https://pxy.fi/10/wzero-as-null-pointer-constant)|[X](https://pxy.fi/10/wzero-as-null-pointer-constant)|[X](https://pxy.fi/11/wzero-as-null-pointer-constant)|[X](https://pxy.fi/12/wzero-as-null-pointer-constant)|[X](https://pxy.fi/13/wzero-as-null-pointer-constant)|[X](https://pxy.fi/14/wzero-as-null-pointer-constant)|[X](https://pxy.fi/15/wzero-as-null-pointer-constant)|
 |`-Wzero-length-array`|[X](https://pxy.fi/4/wzero-length-array)|[X](https://pxy.fi/5/wzero-length-array)|[X](https://pxy.fi/6/wzero-length-array)|[X](https://pxy.fi/7/wzero-length-array)|[X](https://pxy.fi/8/wzero-length-array)|[X](https://pxy.fi/10/wzero-length-array)|[X](https://pxy.fi/10/wzero-length-array)|[X](https://pxy.fi/11/wzero-length-array)|[X](https://pxy.fi/12/wzero-length-array)|[X](https://pxy.fi/13/wzero-length-array)|[X](https://pxy.fi/14/wzero-length-array)|[X](https://pxy.fi/15/wzero-length-array)|
+
+[LLVM]: releases.llvm.org/
+[pxy.fi]: https://pxy.fi/
+[pxy-redirect]: https://github.com/jonasbn/pxy-redirect
