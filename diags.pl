@@ -28,6 +28,8 @@ my %urls = (
 my $ua  = Mojo::UserAgent->new;
 my $data = {};
 my $headings = {};
+my $use_emoji = 0;
+my $use_short_url = 1;
 
 foreach my $key (keys %urls) {
     
@@ -72,10 +74,23 @@ foreach my $flag (@h) {
         print "|`$flag`|";
         foreach my $version (@versions) {
             if (exists $data->{$version}->{$flag}) {
-                my $short_url = _shorten_url($data->{$version}->{$flag});
-                print '[X]('.$short_url.')|';
+                my $short_url = $data->{$version}->{$flag};
+                if ($use_short_url) {
+                    $short_url = _shorten_url($data->{$version}->{$flag});
+                }
+
+                if ($use_emoji) {
+                    print "[✅]($short_url)|";
+                } else {
+                    print "[X]($short_url)|";
+                }
+
             } else {
-                print '-|';
+                if ($use_emoji) {
+                    print "❌|";
+                } else {
+                    print "-|";
+                }
             }
         }
         print "\n";
