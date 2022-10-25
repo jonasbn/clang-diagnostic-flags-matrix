@@ -106,7 +106,7 @@ exit 0;
 sub _shorten_url {
     my ($url) = shift;
 
-    my $short_url = $url =~ s/https:\/\/releases.llvm.org\/(\d+)\.\d+\.\d+\/tools\/clang\/docs\/DiagnosticsReference.html#(.*)/https:\/\/pxy.fi\/$1\/$2/r;
+    my $short_url = $url =~ s/https:\/\/releases.llvm.org\/(\d+)\.\d+\.\d+\/tools\/clang\/docs\/DiagnosticsReference.html#(.*)/https:\/\/pxy.fi\/p\/r\/$1\/$2/r;
 
     return $short_url;
 }
