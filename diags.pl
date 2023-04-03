@@ -104,10 +104,15 @@ exit 0;
 # https://releases.llvm.org/5.0.0/tools/clang/docs/DiagnosticsReference.html#rsanitize-address
 # https://pxy.fi/5/rsanitize-address
 
+# With the introduction of the new proxy in front of the serverless function, we can cut out: /p/r
+# - https://pxy.fi/p/r/5/rsanitize-address
+# Becomes: 
+# - https://pxy.fi/5/rsanitize-address
+
 sub _shorten_url {
     my ($url) = shift;
 
-    my $short_url = $url =~ s/https:\/\/releases.llvm.org\/(\d+)\.\d+\.\d+\/tools\/clang\/docs\/DiagnosticsReference.html#(.*)/https:\/\/pxy.fi\/p\/r\/$1\/$2/r;
+    my $short_url = $url =~ s/https:\/\/releases.llvm.org\/(\d+)\.\d+\.\d+\/tools\/clang\/docs\/DiagnosticsReference.html#(.*)/https:\/\/pxy.fi\/$1\/$2/r;
 
     return $short_url;
 }
