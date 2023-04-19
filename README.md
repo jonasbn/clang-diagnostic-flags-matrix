@@ -2,6 +2,8 @@
 
 A simple script to generate a matrix of clang diagnostic flags.
 
+[![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/otgy.svg)](https://status.pxy.fi/?utm_source=status_badge)
+
 ## Introduction
 
 I created this application to support a _today I learned_ (TIL) note on what diagnostic flags are available in which version. The matrix is published:
