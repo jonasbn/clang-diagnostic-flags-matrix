@@ -1059,7 +1059,7 @@ carton
 |`-Wzero-as-null-pointer-constant`|-|-|[X](https://pxy.fi/6/wzero-as-null-pointer-constant)|[X](https://pxy.fi/7/wzero-as-null-pointer-constant)|[X](https://pxy.fi/8/wzero-as-null-pointer-constant)|[X](https://pxy.fi/10/wzero-as-null-pointer-constant)|[X](https://pxy.fi/10/wzero-as-null-pointer-constant)|[X](https://pxy.fi/11/wzero-as-null-pointer-constant)|[X](https://pxy.fi/12/wzero-as-null-pointer-constant)|[X](https://pxy.fi/13/wzero-as-null-pointer-constant)|[X](https://pxy.fi/14/wzero-as-null-pointer-constant)|[X](https://pxy.fi/15/wzero-as-null-pointer-constant)|[X](https://pxy.fi/16/wzero-as-null-pointer-constant)|[X](https://pxy.fi/17/wzero-as-null-pointer-constant)|
 |`-Wzero-length-array`|[X](https://pxy.fi/4/wzero-length-array)|[X](https://pxy.fi/5/wzero-length-array)|[X](https://pxy.fi/6/wzero-length-array)|[X](https://pxy.fi/7/wzero-length-array)|[X](https://pxy.fi/8/wzero-length-array)|[X](https://pxy.fi/10/wzero-length-array)|[X](https://pxy.fi/10/wzero-length-array)|[X](https://pxy.fi/11/wzero-length-array)|[X](https://pxy.fi/12/wzero-length-array)|[X](https://pxy.fi/13/wzero-length-array)|[X](https://pxy.fi/14/wzero-length-array)|[X](https://pxy.fi/15/wzero-length-array)|[X](https://pxy.fi/16/wzero-length-array)|[X](https://pxy.fi/17/wzero-length-array)|
 
-[LLVM]: releases.llvm.org/
+[LLVM]: https://releases.llvm.org/
 [pxy.fi]: https://pxy.fi/
 [pxy-redirect]: https://github.com/jonasbn/pxy-redirect
 [tilgh]: https://github.com/jonasbn/til/blob/master/clang/diagnostic_flags.md
