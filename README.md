@@ -8,9 +8,7 @@ A simple script to generate a matrix of clang diagnostic flags.
 
 I created this application to support a _today I learned_ (TIL) note on what diagnostic flags are available in which version. The matrix is published:
 
-- _here_ (see below)
-- [GitHub pages for this repository](https://jonasbn.github.io/clang-diagnostic-flags-matrix/)
-- [My TIL collection GitHub website][tilgh]
+- [My TIL collection GitHub website][tilgh] (*recommended*)
 - [My TIL collection: GitHub pages site][tilghp]
 
 The matrix does not contain information for all versions of clang and the matrix may contain errors if the code is not working as expected.
