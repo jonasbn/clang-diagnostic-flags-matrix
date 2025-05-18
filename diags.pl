@@ -11,6 +11,7 @@ use feature qw(say);
 # REF: https://docs.mojolicious.org/Mojo/UserAgent
 
 my %urls = (
+    '20.1.0' => 'https://releases.llvm.org/20.1.0/tools/clang/docs/DiagnosticsReference.html',
     '19.1.0' => 'https://releases.llvm.org/19.1.0/tools/clang/docs/DiagnosticsReference.html',
     '18.1.0' => 'https://releases.llvm.org/18.1.0/tools/clang/docs/DiagnosticsReference.html',
     '17.0.1' => 'https://releases.llvm.org/17.0.1/tools/clang/docs/DiagnosticsReference.html',
