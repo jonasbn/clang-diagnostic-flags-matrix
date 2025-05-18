@@ -32,7 +32,7 @@ The proxy reverts this translation and redirects to the proper page. I have publ
 ## Usage
 
 ```bash
-carton exec -- perl diag.pl > matrix.md
+carton exec -- perl diags.pl > matrix.md
 ```
 
 ## Installation
